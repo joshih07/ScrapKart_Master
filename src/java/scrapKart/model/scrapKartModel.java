@@ -147,6 +147,7 @@ public class scrapKartModel {
         ps1.setString(4,c.getStreet());
         ps1.setString(5,c.getLandmark());
         ps1.setString(6,c.getHouse_no());
+      
         int rows2=ps1.executeUpdate();
         
        System.out.println("Rows Updated="+rows2);

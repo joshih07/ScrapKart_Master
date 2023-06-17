@@ -39,7 +39,7 @@ and open the template in the editor.
             </ul>
             
         </div> --%>
-         <div class="row myrow" >
+         <div class="row my row" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
                 <span><a href="www.google.com">Contact</a></span>

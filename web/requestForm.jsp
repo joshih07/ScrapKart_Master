@@ -22,7 +22,7 @@
         
     </head>
     <body>
-        <%-- <div>
+         <div>
             <ul>
                 <li id="logo"><a href="logout.jsp"><img src="images/logo.jpg" alt="ScrapKart" height="60" width="100"></a></li>
                 <li><a href="logout.jsp">LogOut</a></li>
@@ -32,8 +32,8 @@
             
             </ul>
             
-        </div> --%>
-         <div class="row myrow" >
+        </div> 
+<!--         <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
                 <span><a href="www.google.com">LogOut</a></span>
@@ -41,7 +41,7 @@
                 <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
                 <span><a href="login.jsp">Price List</a></span>
             </div>
-        </div>
+        </div>-->
              <%
             String user=session.getAttribute("user_mail").toString();
             ArrayList<Request> req=new ArrayList<Request>();
