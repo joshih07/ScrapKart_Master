@@ -3,6 +3,8 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-repeat:no-repeat;
     background-size: 100%;
+    margin: 0px;
+    padding: 0px;
 
 }
 img{
@@ -44,8 +46,7 @@ span:hover
     color:orangered;
     cursor:pointer;   
 }
-
-/* .username
+ .username
 {
     float:left;
     margin-left: 50px;
@@ -54,9 +55,9 @@ span:hover
     font-size: 70px;
     color:orangered;
 }
-.heading
+.heading h2
 {
-    text-align: center;
+    margin-left:43%;
     color:black;
     font-weight: bolder;
     margin-top: 7%;
@@ -70,6 +71,8 @@ span:hover
     margin-left:10px;
     margin-right:10px;
 }
+
+/*
 ul{
     list-style-type: none;
     margin-top: -10px;
@@ -127,17 +130,18 @@ table{
     width:100%;
     border-radius:5px;
     padding: 10px;
-     box-shadow: 5px 10px 10px #888888; 
+    box-shadow: 5px 10px 10px #888888; 
     margin-top:3%;
     background-color:rgba(144, 238, 144, 0.5);
 }
 th{
     color:green;
+     font-size: 20px;
 }
 th,td{
     padding:8px;
     text-align:center;
-    font-size: 20px;
+    font-size: 14px;
     border-bottom: 1px solid #ddd ;
 }
 
@@ -178,3 +182,27 @@ input[type=submit]:hover
     margin-left:30%;
     font-size:20px;
 }
+.myfooter{
+        background-color:#003F2A;
+        margin-top:5vw;
+        color:whitesmoke;
+        margin-bottom: 0vw;
+        right:0;
+    }
+    .myfooter p{
+        margin-top: 15px;
+        font-size: 1.0vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        color:rgba(245, 245, 245, 0.555);  
+    }
+    .gogreen p{
+       padding-left: 80px;
+       margin-top: -10px;
+       padding-top: 0px;
+       color:whitesmoke;
+    }
+    .okrow{
+        padding-top:2vw;
+        font-size:1.3vw;
+    }

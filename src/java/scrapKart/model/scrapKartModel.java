@@ -17,11 +17,9 @@ import scrapKart.pojo.Material;
 import scrapKart.pojo.NewRequest;
 import scrapKart.pojo.Request;
 import scrapKart.pojo.PickUpBoy;
+import scrapKart.pojo.PkDetails;
 import scrapKart.pojo.ViewRequestM2;
 
-/*
- * @author HIMANSHU JOSHI
- */
 public class scrapKartModel {
     public static boolean loginValidate(String email,String pass) throws SQLException
     {
@@ -65,6 +63,17 @@ public class scrapKartModel {
         }
         return "A"+id;
     }
+    public static String getUserName(String userid) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("select customer_name from customers where customer_id="+"'"+userid+"'");
+        ResultSet rs=ps.executeQuery();
+        String username="";
+        if(rs.next())
+        {
+            username=username+rs.getString("customer_name");
+        }
+        return username;
+    }
     public static String getNewReq_Id() throws SQLException
     {
         Connection conn=DBConnection.getConnection();
@@ -80,7 +89,7 @@ public class scrapKartModel {
     public static String getCurr_Date() throws SQLException
     {
         Date date=new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");
+        SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd");
         String curr_date=sdf.format(date);
         return curr_date;
         
@@ -116,14 +125,14 @@ public class scrapKartModel {
     public static boolean cancelRequest(String req_id) throws SQLException
     {
         Connection conn=DBConnection.getConnection();
-        PreparedStatement ps=conn.prepareStatement("delete from request where req_id="+"'"+req_id+"'");
+        PreparedStatement ps=conn.prepareStatement("update assign set status='Cancelled' where req_id="+"'"+req_id+"'");
         int rows1=ps.executeUpdate();
-        PreparedStatement ps1=conn.prepareStatement("delete from assign where req_id="+"'"+req_id+"'");
-        int rows2=ps.executeUpdate();
-        PreparedStatement ps2=conn.prepareStatement("delete from scrap where req_id="+"'"+req_id+"'");
-        int rows3=ps.executeUpdate();
-        
-        if(rows1>0&&rows2>0&&rows3>0)
+//        PreparedStatement ps1=conn.prepareStatement("delete from assign where req_id="+"'"+req_id+"'");
+//        int rows2=ps.executeUpdate();
+//        PreparedStatement ps2=conn.prepareStatement("delete from scrap where req_id="+"'"+req_id+"'");
+//        int rows3=ps.executeUpdate();
+        System.out.println("Inside cancelrequest:"+rows1);
+        if(rows1>0)
             return true;
         else
             return false;
@@ -147,7 +156,6 @@ public class scrapKartModel {
         ps1.setString(4,c.getStreet());
         ps1.setString(5,c.getLandmark());
         ps1.setString(6,c.getHouse_no());
-      
         int rows2=ps1.executeUpdate();
         
        System.out.println("Rows Updated="+rows2);
@@ -173,9 +181,12 @@ public class scrapKartModel {
     public static ArrayList<Request> getAllRequests(String user_id) throws SQLException
     {
        Connection conn=DBConnection.getConnection();
-       PreparedStatement ps=conn.prepareStatement("select request_date,schedule_date,request_type,street,landmark,house_no,status,req_id from request  inner join address_book  on request.add_no=address_book.add_no inner join assign on assign.req_id=request.req_id inner join customers c on c.customer_id= request.cust_id and c.customer_id ="+"'"+user_id+"'");
+//       PreparedStatement ps=conn.prepareStatement("select request_date,schedule_date,request_type,street,landmark,house_no,status,req_id from request  inner join address_book  on request.add_no=address_book.add_no inner join assign on assign.req_id=request.req_id inner join customers c on c.customer_id= request.cust_id and c.customer_id ="+"'"+user_id+"'");
+        PreparedStatement ps=conn.prepareStatement("select request.request_date, request.schedule_date, request.request_type, address_book.street, address_book.landmark, address_book.house_no, assign.status,request.req_id FROM request INNER JOIN address_book ON request.add_no = address_book.add_no INNER JOIN assign ON assign.req_id = request.req_id INNER JOIN customers c ON c.customer_id = request.cust_id AND c.customer_id = "+"'"+user_id+"'");
        ResultSet rs=ps.executeQuery();
-               
+
+
+
        ArrayList<Request> requestList=new ArrayList<Request>();  
        //System.out.println("*************************");
        while(rs.next())
@@ -185,6 +196,10 @@ public class scrapKartModel {
            java.sql.Date d2=rs.getDate("schedule_date");
            SimpleDateFormat sdf1=new SimpleDateFormat("dd-MM-YYYY");
            String request_date=sdf1.format(d1);
+//             String request_date = null;
+//             if (d1 != null) {
+//               request_date = sdf1.format(d1);
+//             }
            if(d2==null)
            {    System.out.println("I am innnnn!");
                obj.setSchd_date("-");
@@ -237,7 +252,7 @@ public class scrapKartModel {
        while(rs.next()){         
            java.sql.Date d1=rs.getDate("request_date");
            java.sql.Date d2=rs.getDate("schedule_date");
-           SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");
+           SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd");
            String request_date=sdf.format(d1);
            String schedule_date=sdf.format(d2);
            obj.setReq_date(request_date);
@@ -284,6 +299,108 @@ public class scrapKartModel {
    }
    
    //////////////////////////////////////////////MODULE-2///////////////////////////////////////////////////
+   public static ArrayList<PkDetails> getPkDetails() throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        System.out.println("**123");
+        PreparedStatement ps= conn.prepareStatement("select req_id,status,pk_id,name,schedule_date from assign inner join employee on employee.emp_id=assign.pk_id inner join request on request.req_id=assign.req_id");
+        ResultSet rs=ps.executeQuery();
+        ArrayList<PkDetails> details=new ArrayList<PkDetails>();
+        while(rs.next())
+        {
+            PkDetails obj=new PkDetails();
+            SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");            
+            String scheduled_date=rs.getString("schedule_date");
+            if(scheduled_date==null)
+                scheduled_date="Not Scheduled";
+            else
+            {
+                java.sql.Date d2=rs.getDate("schedule_date");
+                scheduled_date=sdf.format(d2);
+            }                 
+            obj.setPk_Id(rs.getString("pk_id"));
+            obj.setName(rs.getString("name"));
+            obj.setReq_id(rs.getString("req_id"));
+            obj.setStatus(rs.getString("status"));
+            obj.setScheduled_date(scheduled_date);
+            details.add(obj);
+        }
+        return details;
+     
+        
+   }
+      public static ArrayList<PkDetails> FetchDetailsPkName(String PkName) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps= conn.prepareStatement("select req_id,status,pk_id,name,schedule_date from assign inner join employee on employee.emp_id=assign.pk_id inner join request on request.req_id=assign.req_id and name="+"'"+PkName+"'");
+        ResultSet rs=ps.executeQuery();
+        ArrayList<PkDetails> details=new ArrayList<PkDetails>();
+        System.out.println("fetchdetailspkname");
+        while(rs.next())
+        {
+            PkDetails obj=new PkDetails();
+            SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");            
+            String scheduled_date=rs.getString("schedule_date");
+            if(scheduled_date==null)
+                scheduled_date="Not Scheduled";
+            else
+            {
+                java.sql.Date d2=rs.getDate("schedule_date");
+                scheduled_date=sdf.format(d2);
+            }                 
+            obj.setPk_Id(rs.getString("pk_id"));
+            obj.setName(rs.getString("name"));
+            obj.setReq_id(rs.getString("req_id"));
+            obj.setStatus(rs.getString("status"));
+            obj.setScheduled_date(scheduled_date);
+            details.add(obj);
+        }
+        System.out.println("^^"+details);
+        return details;     
+   }
+       public static ArrayList<PkDetails> FetchDetailsOnFromdate(String date1,String date2) throws SQLException{
+           System.out.println("^^^^");
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps= conn.prepareStatement("select req_id,status,pk_id,name,schedule_date from assign inner join employee on employee.emp_id=assign.pk_id inner join request on request.req_id=assign.req_id and request_date between to_date("+"'"+date1+"'"+", 'YYYY-MM-DD')and to_date("+"'"+date2+"'"+",'YYYY-MM-DD')");
+        ResultSet rs=ps.executeQuery();
+        ArrayList<PkDetails> details=new ArrayList<PkDetails>();
+        while(rs.next())
+        {
+            PkDetails obj=new PkDetails();
+            SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");            
+            String scheduled_date=rs.getString("schedule_date");
+            if(scheduled_date==null)
+                scheduled_date="Not Scheduled";
+            else
+            {
+                java.sql.Date d2=rs.getDate("schedule_date");
+                scheduled_date=sdf.format(d2);
+            }                 
+            obj.setPk_Id(rs.getString("pk_id"));
+            obj.setName(rs.getString("name"));
+            obj.setReq_id(rs.getString("req_id"));
+            obj.setStatus(rs.getString("status"));
+            obj.setScheduled_date(scheduled_date);
+            details.add(obj);
+        }
+        System.out.println(details);
+        return details;     
+   }  
+   public static String purchaseAmount() throws SQLException{
+       
+        Connection conn=DBConnection.getConnection();
+        String today_date= new SimpleDateFormat("dd/MM/YYYY").format(new Date());
+        PreparedStatement ps= conn.prepareStatement("select sum(bill_amount) as mysum from bill where bill_date="+"'"+today_date+"'");
+        ResultSet rs=ps.executeQuery();
+        rs.next();
+        String sum = rs.getString(1);
+        System.out.println(sum);
+        
+        System.out.println("total purchase:"+sum);
+        if(sum==null)
+        {
+            sum="Rs 0";
+        }
+        return sum;
+   }
    
    public static ArrayList<ViewRequestM2> getTodaysRequest() throws SQLException
    {
@@ -352,7 +469,6 @@ public class scrapKartModel {
        }           
        return req_List;   
    }
-  
    public static ArrayList<ViewRequestM2> FetchReqOncustName(String name) throws SQLException
    {
        Connection conn=DBConnection.getConnection();
@@ -386,7 +502,7 @@ public class scrapKartModel {
        }
          System.out.println("Inside scrapKartModel="+req_List.size()); 
          return req_List;
-       
+   
    }
    public static ArrayList<ViewRequestM2> FetchReqOnOndate(String date) throws SQLException
    { 
@@ -429,7 +545,9 @@ public class scrapKartModel {
    public static ArrayList<ViewRequestM2> FetchReqOnFromdate(String date1,String date2) throws SQLException
    {
       Connection conn=DBConnection.getConnection();
-        PreparedStatement ps= conn.prepareStatement("select customer_name,customer_id,req_id,schedule_date,request_date,street,landmark,house_no,status from request  inner join address_book  on request.add_no=address_book.add_no inner join assign on assign.req_id=request.req_id inner join customers c on c.customer_id= request.cust_id and request_date between"+"'"+date1+"'"+"and"+"'"+date2+"'");
+      System.out.println(date1);
+      
+        PreparedStatement ps= conn.prepareStatement("select customer_name,customer_id,req_id,schedule_date,request_date,street,landmark,house_no,status from request  inner join address_book  on request.add_no=address_book.add_no inner join assign on assign.req_id=request.req_id inner join customers c on c.customer_id= request.cust_id and request_date between to_date( " +"'"+ date1 +"'"+ ", 'DD-Mon-YYYY')and to_date( " +"'"+ date2 +"'"+ ",'DD-Mon-YYYY')");
         ResultSet rs=ps.executeQuery();
         ArrayList<ViewRequestM2> req_List=new ArrayList<ViewRequestM2>();
         while(rs.next())
@@ -456,6 +574,7 @@ public class scrapKartModel {
             obj.setStatus(rs.getString("status"));
             req_List.add(obj);
         }
+       System.out.println(req_List);
         return req_List;
        
    }
@@ -505,19 +624,23 @@ public class scrapKartModel {
        else
            return false;
    }
-   public static boolean assignRequest(String pkId, String scheduleDate,String requestId) throws SQLException
+   public static boolean assignRequest(String pkId, String scheduleDate,String requestId) throws SQLException, ParseException
    {
        Connection conn=DBConnection.getConnection();
        PreparedStatement ps1=conn.prepareStatement("update assign set pk_Id="+"'"+pkId+"'"+",status='Assigned' where req_id="+"'"+requestId+"'");
-       int row1=ps1.executeUpdate();
+       int row1=ps1.executeUpdate();  
+      
+     
+       System.out.println("Sch date"+scheduleDate);
+ 
+       PreparedStatement ps2=conn.prepareStatement("update request set schedule_date= ? where req_id=?");
+       ps2.setString(1,scheduleDate);
+       ps2.setString(2,requestId);
        
-       java.util.Date myDate = new java.util.Date(scheduleDate);
-       java.sql.Date sqlDate = new java.sql.Date(myDate.getDate());
-       System.out.println("SQLDate:"+sqlDate);
-       PreparedStatement ps2=conn.prepareStatement("update request set schedule_date="+"'"+sqlDate+"'"+"where req_id="+"'"+requestId+"'");
        int row2=ps2.executeUpdate();
-       System.out.println("row1="+row1+" row2="+row2);
+       System.out.println("row1="+row1+" row2="+row2);   
        
+ 
        if(row1>0&&row2>0)
            return true;
        else

@@ -1,6 +1,6 @@
 <%-- 
     Document   : editProfile
-    Created on : 23 Dec, 2019, 4:24:11 PM
+    Created on : 23 Dec, 2022, 4:24:11 PM
     Author     : HIMANSHU JOSHI
 --%>
 
@@ -25,7 +25,7 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     </head>
     <body>
-        <div>
+<!--        <div>
             <ul>
                 <li id="logo"><a href="logout.jsp"><img src="images/logo.jpg" alt="ScrapKart" height="60" width="100"></a></li>
                 <li><a href="www.google.com">Contact</a></li>
@@ -34,6 +34,16 @@ and open the template in the editor.
                 <li><a href="www.google.com">Login/Register</a></li>
             </ul>
             
+        </div>-->
+        
+        <div class="row myrow" >
+            <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
+            <div class="col-sm-10 myheader">
+                <span><a href="login.jsp">Price List</a></span>
+                <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
+                <span> <a href="#downfooter">Contact</a></span>
+                <span><a href="logout.jsp">Log out</a></span>     
+            </div>
         </div>
      
         <div class="container">
@@ -70,7 +80,7 @@ and open the template in the editor.
                     <input type="text" name="House_no" placeholder="Enter Houseno" required><br><br>
                     <input type="text" name="Add_type" placeholder="Enter Address Type" required><br><br>
                   
-                    <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success " style="background-color: green;margin-left: 20px; color:white; text-align:center;float:right;  font-size:20px;font-weight: bold;">Change Password </button><br> 
+                   <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success" style="background-color: green; margin-left: 20px; color: white; text-align: center; float: right; font-size: 20px; font-weight: bold;">Change Password</button>
 <button type="button" class="btn btn-success" style="background-color: green; color: white; text-align: center; float: right; font-size: 20px; margin-left: 20px; font-weight: bold;"><a href="requestForm.jsp">Back</a></button>
 
                     <input  type="submit" value="Submit"  style="background-color: green; color:white; text-align:center;float:right; font-size:20px; margin-left:20px; padding-top: 6px; padding-bottom: 4px; "><br><br>
@@ -112,7 +122,27 @@ and open the template in the editor.
         </div>
         </div>
         
-          <div class="container-fluid" style="height: 300px; background-color:#003F2A;">
+          <div class="container-fluid myfooter"  id="downfooter" style="height: 15vw;">
+        
+            <div class="row okrow">
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="images/green.png" height="70" width="80">Go Green
+                </div>
+
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
+                </div>
+
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
+                  Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi0703@gmail.com</p>
+                </div>
+            </div>    
+        </div>
        
     </body>
 </html>
+

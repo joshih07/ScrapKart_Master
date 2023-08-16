@@ -1,7 +1,7 @@
 <%-- 
     Document   : registerForm
-    Created on : 23 Dec, 2019, 4:21:20 PM
-    Author     : HARSHITA JMA
+    Created on : 23 Dec, 2022, 4:21:20 PM
+    Author     :HIMANSHU JOSHI
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -33,9 +33,9 @@ and open the template in the editor.
          <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">Contact</a></span>
-                <span><a href="www.google.com">Price List</a></span>
-                <span><a >Request PickUp</a></span>
+                <span> <a href="#downfooter">Contact</a></span>
+                <span><a href="PriceList.jsp">Price List</a></span>
+                <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
                 <span><a href="login.jsp">Login/Register</a></span>
             </div>
         </div>
@@ -78,7 +78,7 @@ and open the template in the editor.
                     
                     <input  type="submit" value="Submit"><br><br>
                 </form>
-                <p class="confirm">Already have an account?<a href="login.jsp" style="color:green ;margin-left:6;">Login</a></p>
+                <p class="confirm">Already have an account? <a href="login.jsp" style="color:green ;"> Login</a></p>
                  
             </div>
             <div class="col-sm-2"></div>
@@ -117,7 +117,26 @@ and open the template in the editor.
         }
      </script>
      
-      <div class="container-fluid" style="height: 300px; background-color:#003F2A;">
+      <div class="container-fluid myfooter" id="downfooter" style="height: 15vw;">
+        
+            <div class="row okrow">
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="images/green.png" height="70" width="80">Go Green
+                </div>
+
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
+                </div>
+
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
+                  Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi0703@gmail.com</p>
+                </div>
+            </div>    
+        </div>
         
     </body>
     

@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewProfile
-    Created on : 23 Dec, 2019, 4:25:40 PM
-    Author     : HARSHITA JMA
+    Created on : 23 Dec, 2022, 4:25:40 PM
+    Author     : HIMANSHU JOSHI
 --%>
 
 <%@page import="java.sql.SQLException"%>
@@ -39,13 +39,14 @@ and open the template in the editor.
             </ul>
             
         </div> --%>
-         <div class="row my row" >
+         <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">Contact</a></span>
-                <span><a href="www.google.com">Request PickUp</a></span>
-                <span><a >Price List</a></span>
-                <span><a href="login.jsp">Login/Register</a></span>
+                <span><a href="login.jsp">Price List</a></span>
+                <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
+                 <span> <a href="#downfooter">Contact</a></span>
+                <span><a href="logout.jsp">Log out</a></span>
+   
             </div>
         </div>
         <%
@@ -60,49 +61,61 @@ and open the template in the editor.
                  e.printStackTrace();
              }
         %>
-        <div class="container">
-        <div class="row"  >
-            <div class="col-sm-12 registerform">
-                <h1 class="heading">Profile</h1>
-                <hr>
-                <div class="col-sm-6" style="text-align:center">
-                    <label>Name :</label><br>
-                    <label>Email :</label><br>
-                    <label>Contact :</label><br>
-                    <label>Address</label><br>
-                    <label>House No:</label><br>
-                    <label>Street:</label><br>
-                    <label>Landmark:</label><br>
-                    <label>City:</label><br>
-                    
-
-                </div>
-
-                <div class="col-sm-6"  style="text-align:left">
-                    <% for(Customer c :cust)
-                    { %>          
-                    <label style="color: black;"><%= c.getName()%></label><br>
-                    <label style="color: black;"><%= c.getEmail() %></label><br>
-                    <label style="color: black;"><%= c.getContact() %></label><br><br><br>
-                    <label style="color: black;"><%= c.getHouse_no()%></label><br>
-                    <label style="color: black;"><%=  c.getStreet()%></label><br>
-                    <label style="color: black;"><%= c.getLandmark()%></label><br>
-                    <label style="color: black;"><%= c.getCity()%></label><br><br> 
-                    <%}
-                    %>
-
-                </div>
-                    <a href="editProfile.jsp"><label  class=" btn btn-success myclick" style="background-color: green;margin-left: 20px; color:white; text-align:center;float:right; font-size:20px;font-weight: bold;">Edit Profile</label></a><br>                
-            <button type="button" class="btn btn-success myclick" style="background-color: green; color: white; text-align: center; float: right; font-size: 20px; font-weight: bold;"><a href="requestForm.jsp">Back</a></button>
-
+       <div class="container">
+  <div class="row">
+    <div class="col-sm-12 registerform">
+      <h1 class="heading">Profile</h1>
+      <hr>
+      <div class="col-sm-6" style="text-align:center">
+        <label>Name:</label><br>
+        <label>Email:</label><br>
+        <label>Contact:</label><br>
+        <label>Address:</label><br>
+        <label>House No:</label><br>
+        <label>Street:</label><br>
+        <label>Landmark:</label><br>
+        <label>City:</label><br>
+      </div>
+      
+      <div class="col-sm-6" style="text-align:left">
+        <% for (Customer c : cust) { %>
+        <label style="color: black;"><%= c.getName() %></label><br>
+        <label style="color: black;"><%= c.getEmail() %></label><br>
+        <label style="color: black;"><%= c.getContact() %></label><br><br><br>
+        <label style="color: black;"><%= c.getHouse_no() %></label><br>
+        <label style="color: black;"><%= c.getStreet() %></label><br>
+        <label style="color: black;"><%= c.getLandmark() %></label><br>
+        <label style="color: black;"><%= c.getCity() %></label><br><br>
+        <% } %>
+      </div>
+      
+      <a href="editProfile.jsp"><label class="btn btn-success myclick" style="background-color: green; margin-left: 20px; color: white; text-align: center; float: right; font-size: 20px; font-weight: bold;">Edit Profile</label></a><br>
+      <button type="button" class="btn btn-success myclick" style="background-color: green; color: white; text-align: center; float: right; font-size: 20px; font-weight: bold;"><a href="requestForm.jsp">Back</a></button>
+    </div>
+  </div>
+</div>
 
         
-                 
-            </div>
-        </div>
-        </div>
+       <div class="container-fluid myfooter" id="downfooter" style="height: 15vw;">
         
-        <div class="container-fluid" style="height: 300px; background-color:#003F2A;">
+            <div class="row okrow">
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="images/green.png" height="70" width="80">Go Green
+                </div>
+
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
+                </div>
+
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
+                  Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi@gmail.com</p>
+                </div>
+            </div>    
+        </div>
     </body>
 </html>
 

@@ -1,7 +1,7 @@
 <%-- 
     Document   : RequestInfoM2
-    Created on : 15 Mar, 2020, 10:45:19 PM
-    Author     : HARSHITA JMA
+    Created on : 15 Mar, 2023, 10:45:19 PM
+    Author     :  HIMANSHU JOSHI
 --%>
 <%@page import="scrapKart.model.scrapKartModel"%>
 <%@page import="java.sql.SQLException"%>
@@ -33,10 +33,9 @@
          <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">Contact</a></span>
-                <span><a href="www.google.com">Price List</a></span>
-                <span><a >Request PickUp</a></span>
-                <span><a href="login.jsp">Login/Register</a></span>
+                <span class="myspan" ><a href="ViewRequestM2.jsp">View Request</a></span>
+                <span class="myspan"><a href="DashBoardM2.jsp">DashBoard</a></span>
+                <span class="myspan"><a href="LoginM2.html">Log out</a></span>
             </div>
         </div>
         <div>
@@ -95,8 +94,8 @@
                                 <label style="color: black;"><%= req.getReq_date()%></label><br>
                                 <label style="color: black;"><%= req.getSchd_date()%></label><br>
                                 <!--<label style="color: black;"><></label><br>-->
-                                <label style="color: black;"><%= req.getAddress()%></label><br><br>
-                                <label style="color: black;"><%= pkb.getName()%></label><br><br>
+                                <label style="color: black;"><%= req.getAddress()%></label><br><br><br><br>
+                                <label style="color: black;"><%= pkb.getName()%></label><br><br><br><br>
                                 <label style="color: black;"><%= pkb.getContact_no()%></label><br>
                             </div>
                     </div>
@@ -137,7 +136,7 @@
                        
                 </div>
                   
-                           <br>  <a href="requestForm.jsp"><button class="btn btn-primary" style="padding-left: 30px;padding-right: 30px;">Back</button></a>
+                           <br>  <a href="ViewRequestM2.jsp"><button class="btn btn-primary" style="padding-left: 30px;padding-right: 30px;">Back</button></a>
                 </div>
                 <br><br><br>
         </div>

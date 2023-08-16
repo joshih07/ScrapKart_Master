@@ -1,6 +1,6 @@
 <%-- 
     Document   : requestForm
-    Created on : 23 Dec, 2012, 4:22:28 PM
+    Created on : 23 Dec, 2022, 4:22:28 PM
     Author     : HIMANSHU JOSHI
 --%>
 
@@ -22,7 +22,7 @@
         
     </head>
     <body>
-         <div>
+        <%-- <div>
             <ul>
                 <li id="logo"><a href="logout.jsp"><img src="images/logo.jpg" alt="ScrapKart" height="60" width="100"></a></li>
                 <li><a href="logout.jsp">LogOut</a></li>
@@ -32,94 +32,84 @@
             
             </ul>
             
-        </div> 
-<!--         <div class="row myrow" >
+        </div> --%>
+         <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">LogOut</a></span>
-                <span><a href="www.google.com">Contact</a></span>
-                <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
-                <span><a href="login.jsp">Price List</a></span>
+                <span><a href="PriceList.jsp">Price List</a></span>
+                <span><a onclick="document.getElementById('id01').style.display='block'">Request PickUp</a></span>
+                <span> <a href="#downfooter">Contact</a></span>
+                <span><a href="logout.jsp">Log out</a></span>
+               
+                
+                
             </div>
-        </div>-->
+        </div>
              <%
             String user=session.getAttribute("user_mail").toString();
+            String username=scrapKartModel.getUserName(user);
             ArrayList<Request> req=new ArrayList<Request>();
-           
             try
             {
-                System.out.println("Inside try of request form where function is called before get all request is called!!");
+                System.out.println("Inside try of requestform where function is called before getall request is called!!");
                 req=scrapKartModel.getAllRequests(user);
-                System.out.println("Inside try of request form where function is called!!");
+                System.out.println("Inside try of requestform where function is called!!");
             }
             catch(SQLException e)
              {
                  e.printStackTrace();
              }
             int count=0;
-            //            Function for canceling request              //
-//            System.out.println("Ready to call cancel request!!");
-//            String cancel_req=request.getParameter("cancel_Req");
-//            System.out.println("cancel request="+cancel_req);
-//            String req_id=request.getParameter("req_id");
-//            if(cancel_req.equals("true"))
-//            {
-//                try
-//                {
-//                     System.out.println(" call camcel request!!");
-//                    boolean result=scrapKartModel.cancelRequest(req_id);
-//                     System.out.println(" called camcel request!!");
-//                }
-//                catch(SQLException e)
-//                {
-//                    e.printStackTrace();
-//                }
-//            }
             
          %>
          
-         <div class="username"><h2>Welcome <%= user%>!</h2></div>
-       
+       <div class="username"><h2>Welcome <%= username%>!</h2></div>
        <div class="nav2">
-            <a href="viewProfile.jsp">View Profile</a>
-            <a href="editProfile.jsp">Edit Profile</a>
+            <a href="viewProfile.jsp" >View Profile</a>
+            <a href="editProfile.jsp" >Edit Profile</a>
         </div>
-        <div class="container">
-        <div class="row" >  
+ 
             <div class="heading"><h2>Request Status</h2></div>  
             <div class="col-sm-12 requestTable">
             
- <table>
-      
-  <tr>
-    <th>Request</th>
-    <th>Requested Date</th>
-    <th>Scheduled Date</th>
-    <th>Address</th>
-    <th>Type</th>
-    <th>Status</th>
-  </tr>
-  
-  <!-- <% for (Request r : req) { 
-    count++;
-  %>
-  <tr id="<%= r.getReq_id() %>">  -->
-  
-    <td><%= count %></td>  
-    <td><%= r.getReq_date() %></td>
-    <td><%= r.getSchd_date() %></td>
-    <td><%= r.getAddress() %></td>
-    <td><%= r.getReq_type() %></td>
-    <% if (r.getStatus().equals("Completed")) { %>
-    <td><a data-id="<%= r.getReq_id() %>" onclick="fetchReqId(this);" data-toggle="tooltip" title="Click to view Description"><%= r.getStatus() %></a></td>
-    <% } else { %>
-    <td><a data-id="<%= r.getReq_id() %>" onclick="CancelReq(this);" data-toggle="tooltip" title="Click to Cancel Request"><%= r.getStatus() %></a></td>
+             <table>
+    <tr>
+        <th>Request</th>
+        <th>Requested Date</th>
+        <th>Scheduled Date</th>
+        <th>Address</th>
+        <th>Type</th>
+        <th>Status</th>
+    </tr>
+    
+      <% for(Request r:req) {
+            count++;
+             %>
+        <!--<tr id="<%= r.getReq_id()%>">-->
+             <tr>
+        <td><%= count%></td>
+        <td><%= r.getReq_date() %></td>
+        <td><%= r.getSchd_date() %></td>
+        <td><%= r.getAddress() %></td>
+        <td><%= r.getReq_type() %></td>
+        <% if(r.getStatus().equals("Completed")) { %>
+        <td>
+            <a data-id="<%= r.getReq_id()%>" onclick="fetchReqId(this)" data-toggle="tooltip" title="Click to view Description">
+                <%= r.getStatus() %>
+            </a>
+        </td>
+        <% } else { %>
+        <td>
+            <a data-id="<%= r.getReq_id()%>" onclick="CancelReq(this)" data-toggle="tooltip" title="Click to Cancel Request">
+                <%= r.getStatus() %>
+            </a>
+        </td>
+        <% } %>
+    </tr>
     <% } %>
-  </tr>
-  <% } %>
 </table>
-<br><br>
- 
+
+               <br><br>   
                  
                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-large myclick">+ Add Request</button>
             </div>
@@ -152,7 +142,26 @@
            </div>
         </div>
        </div>
+       <div class="container-fluid myfooter" id="downfooter"  style="height: 15vw;">
         
+            <div class="row okrow">
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="images/green.png" height="70" width="80">Go Green
+                </div>
+
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
+                </div>
+
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
+                  Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi0703@gmail.com</p>
+                </div>
+            </div>    
+        </div>
     </body>
       <%
         String status=request.getParameter("addReqisValid");
@@ -180,50 +189,38 @@
           {
               document.getElementById('id01').style.display='block';
           }
-      </script>
-      <script>
+           
            function fetchReqId(d)
            {   
-               alert("PeClicked");
+               alert("completed request!");
                var req_id=d.getAttribute("data-id");
                window.location.replace("RequestInfo.jsp?req_id="+req_id);
            } 
            function CancelReq(d)
            {
-               alert("Pending Clicked");
+               alert("Request being Cancelled");
                var req_id=d.getAttribute("data-id");
                
-               alert("req_id");
-               
+               alert(req_id);
+               var url="CancelReqServlet2?req_id="+req_id;
                if(window.XMLHttpRequest)
                {
                    request=new XMLHttpRequest();
                }
-               
-               
-                   request.onreadystatechange=function(){
-                   
+               request.onreadystatechange=function(){
                         if(this.readyState==4&&this.status==0)
                         {
+                            alert("Please relod to see changes");
                             var this_request_id=request.responseText;     
                             document.getElementById("req_id").remove();  
                         }
-                   };
-                   request.open("GET","CancelReqServlet2?"+req_id,true);
+               };
+               
+                   request.open("GET",url,true);
                    request.send();
-               
-              alert("***");
-               
-           }
-           
-//           function getInfo(var req_id)
-//           {
-//               if(request.readyState==4)
-//               {
-//                   var this_request_id=request.responseText;     
-//                   document.getElementById("req_id").remove();  
-//               }
-//           }
+                   
+           }  
+          
       </script>
       <%  
         String request_id=request.getParameter("req_id");

@@ -5,6 +5,7 @@ body{
     background-repeat:no-repeat;
     background-size: 100%;
     background-color: #003F2A;
+    overflow-x: hidden;
 }
 img{
     width: 10vw;
@@ -92,7 +93,7 @@ li a
     border-radius:5px;
     padding: 10px;
     /* box-shadow: 5px 10px 10px #888888; */
-    margin-top:10%;
+    margin-top:5%;
     background-color:rgba(255, 255, 255, 0.945);
 
 }
@@ -109,7 +110,7 @@ label
 } 
 form
 {
-    margin-left:10%;
+    margin-left:15%;
 }
 input[type=text],input[type=password]
 {
@@ -135,15 +136,15 @@ input[type=submit]:hover
 }
 .confirm
 {
-    margin-left:30%;
+    text-align: center;
     font-size:15px;
+    
 }
 .mybutton
 {
     background-color: green;
-    margin-left: 20px;
     color:white;
-    text-align:center;
+    margin-left: 50px;
     float:right;
     border-radius: 5px;
 }
@@ -168,3 +169,22 @@ th,td{
     font-size: 20px;
     border-bottom: 1px solid #ddd ;
 }
+.myfooter{
+        background-color:#003F2A;
+        margin-top:5vw;
+        color:whitesmoke;
+        margin-bottom: 0vw;
+        right:0;
+        box-shadow: 2px 2px 2px 2px #f1f1f1;
+    }
+    .myfooter p{
+        margin-top: 15px;
+        font-size: 1.0vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        color:rgba(245, 245, 245, 0.555);  
+    }
+    .okrow{
+        padding-top:2vw;
+        font-size:1.3vw;
+    }

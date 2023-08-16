@@ -5,6 +5,10 @@
  */
 package scrapKart.pojo;
 
+/**
+ *
+ * @author HIMANSHU JOSHI
+ */
 public class Customer {
         private String name,email,password,contact,city,street,landmark,house_no,add_type;
 

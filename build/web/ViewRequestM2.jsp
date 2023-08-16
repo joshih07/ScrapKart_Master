@@ -1,7 +1,7 @@
 <%-- 
     Document   : ViewRequest
     Created on : 2 Mar, 2023, 10:25:01 AM
-    Author     : HIMANSHU JOSHI 
+    Author     : HIMANSHU JOSHI
 --%>
 
 <%@page import="java.io.PrintWriter"%>
@@ -14,10 +14,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ScrapKart DashBoard</title>
+    <title>Requests@Manager</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="css/ViewRequest.css">
     
 </head>
@@ -26,10 +28,11 @@
      <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">Log out</a></span>
-                <span><a href="www.google.com">DashBoard</a></span>
-                <span><a>View Request</a></span>
-                <span><a href="login.jsp">Profile</a></span>
+                
+                <span class="myspan" ><a >View Request</a></span>
+                <span class="myspan"><a href="PriceListM2.jsp">PriceList</a></span>
+                <span class="myspan"><a href="DashBoardM2.jsp">DashBoard</a></span>
+                <span class="myspan"><a href="LoginM2.html">Log out</a></span>
             </div>
         </div>
     <div>
@@ -40,26 +43,21 @@
             <li><a href="request.html">View Request</a></li>
             <li><a href="request.html">Profile</a></li>    
         </ul> --%>
-        
         <%
-           
               ArrayList<ViewRequestM2> request_List=new ArrayList<ViewRequestM2>();
-             
               try
-              {
-                 
+              { 
                   request_List=scrapKartModel.getTodaysRequest();
               }
               catch(SQLException e)
               {
-                  
                    e.printStackTrace();
               }
              
               System.out.println("SIZE OF ARRAYLIST:"+request_List.size());
         %>
            
-                    <h3 style="text-align:center">REQUESTS</h3>
+            <h3 style="text-align:center">REQUESTS</h3>
              
             <div class="major">
                <div class="minor1">
@@ -77,11 +75,11 @@
                     <a onclick="disable3()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="ondate"  placeholder="dd/mm/yyyy" id="ondate" /></a>
           
                     
-                    <label >Search by Date Range</label><br>
-                    <label > From</label><br>
-                    <a onclick="disable4()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="fromdate"  placeholder="dd/mm/yyyy" id="fromdate"></a>
+                    <!--<label >Search by Date Range</label><br>-->
+<!--                    <label > From</label><br>
+                    <a onclick="disable4()"><input type="text"  class="datepicker" name="fromdate"  placeholder="DD-Mon-YYYY" id="fromdate"></a>
                     <label> To</label><br>
-                    <a onclick="disable4()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="todate" placeholder="dd/mm/yyyy" id="todate"></a>
+                    <a onclick="disable4()"><input type="text"  class="datepicker" name="todate" placeholder="DD-Mon-YYYY" id="todate"></a>-->
                     <input type="submit" value="Search">
                    
                 </form>
@@ -89,12 +87,12 @@
                
                <div class="minor2"> 
                 
-                <button class="refresh">
-                    <a onclick="window.location.reload();">  <img src="images/ref.png" height="20" width="20"> </a>
+                <button class="refresh" onclick="window.location.reload();">
+                    <img class="myicon" src="images/ref.png"  > 
                      <span>Refresh</span>
                  </button>
                    <button class="refresh" style="background-color:#ff9900; border-radius: 5px;" >
-                    <img src="images/product.png" height="20" width="20" >
+                    <img  class="myicon" src="images/product.png"  >
                     <span>Today's Requests</span>
                  </button>
 
@@ -139,8 +137,6 @@
                                                             action= "No Action";  
                                                     %>
                                                         <a data-id="<%= r.getReqId()%>"  onclick="fetchReqId(this,'<%= action %>');" style="font-size: 12px"><%=action%></a>
-
-                                               
                                               </div>
                                            </td>
                                         </tr>
@@ -157,42 +153,38 @@
                         
        <!--                                               MODAL                                         -->
      
-     <div class="w3 container">
-           <div id="id01" class="w3-modal">
-               <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+   <div class="w3-container">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+      <div class="w3-center">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+        <form class="w3-container" method="post" action="AssignReqServletM2">
+          <div class="w3-section">
+            <div class="form-group">
+              <label for="sel1" style="font-size:15px">SELECT PICKUP BOY ID AND DATE:</label><br>
+              <label>Select PickUp Boy</label><br>
+              <select class="form-control" id="sel1" name="pkID">
+                <!--ArrayList to be displayed using for loop-->
+                <option value="PB101" style="font-size:15px">PB101</option>
+                <option value="PB102" style="font-size:15px">PB102</option>
+                <option value="PB103" style="font-size:15px">PB103</option>
+                <option value="PB104" style="font-size:15px">PB104</option>
+                <option value="PB105" style="font-size:15px">PB105</option>
+              </select><br><br>
+              <label>Schedule On</label><br>
+              <input type="text" class="datepicker" name="scheduleDate" placeholder="dd-MON-yyyy" id="ondate" /><br>
+              <label>Please confirm Request Id</label><br>
+              <input type="text" name="requestId" placeholder="Enter Request Id here">
+              <br><br>
+              <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-                <div class="w3-center"><br>
-                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-
-                    <form  class="w3-container " method="post" action="AssignReqServletM2">
-                    <div class="w3-section">
-                        <div class="form-group">
-                            <label for="sel1" style="font-size:15px" >SELECT PICKUP BOY ID AND DATE:</label><br>
-                            <label>Select PickUp Boy </label><br>
-                           <select class="form-control" id="sel1" name="pkID">
-  <!--ArrayList to be displayed using for loop-->
-  <option value="PB101" style="font-size:15px">PB101</option>
-  <option value="PB102" style="font-size:15px">PB102</option>
-  <option value="PB103" style="font-size:15px">PB103</option>
-  <option value="PB104" style="font-size:15px">PB104</option>
-  <option value="PB105" style="font-size:15px">PB105</option>
-</select>
-<br>
-<label for="ondate">Schedule On</label><br>
-<input type="text" class="datepicker" name="schedulDate" placeholder="dd-MON-yyyy" id="ondate"><br>
-<label for="requestId">Please confirm Request Id</label><br>
-<input type="text" name="requestId" placeholder="Enter Request Id here">
-<br><br>
-                                <!--Add a text to enter date-->
-                            <button class="btn btn-success" type="submit">Submit</button>
-                          </div>        
-                    </div>
-                </form>
-           </div> 
-           </div>
-        </div>
-       </div> 
-       
        
 <script>
         function disable1()
@@ -238,23 +230,20 @@
         }
         function fetchReqId(d, action)
            {   
-               
-              alert(action);
                var req_id=d.getAttribute("data-id");
                if(action=="View Request")
                     window.location.replace("RequestInfoM2.jsp?req_id="+req_id);
-               if(action=="Cancel Request")
+               else if(action=="Cancel Request")
                {
-                   if(confirm("Cancel Request ?"))
+                   if(confirm("Confirm cancel request ?"))
                         window.location.replace("CancelReqM2.jsp?req_id="+req_id);
                }
-               if(action=="Assign Request")
+               else if(action=="Assign Request")
                {
                     //alert(action);
 //                   window.location.replace("AssignRequestM2.jsp?req_id="+req_id);
                      document.getElementById('id01').style.display='block';           
                }
-
                else
                {
                    

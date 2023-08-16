@@ -3,7 +3,6 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-repeat:no-repeat;
     background-size: 100%;
-  
     background-color:rgba(144, 238, 144, 0.712);
 }
 img{
@@ -94,3 +93,39 @@ hr{
     width: 180px;
       
 }
+.myicon{
+    padding-left:0px;
+    height:3%;
+    width: 3%;
+}
+.myicon2{
+    padding-left: 0px;
+    height: 30px;
+    width:30px;
+    
+}
+.myfooter{
+        background-color:#003F2A !important;
+        margin-top:5vw;
+        color:whitesmoke;
+        margin-bottom: 0vw;
+        right:0;
+    }
+    .myfooter p{
+        margin-top: 15px;
+        font-size: 1.0vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        color:rgba(245, 245, 245, 0.555);  
+    }
+    .gogreen p{
+       padding-left: 80px;
+       margin-top: -10px;
+       padding-top: 0px;
+       color:whitesmoke;
+    }
+    .okrow{
+        padding-top:2vw;
+        font-size:1.3vw;
+    }
+

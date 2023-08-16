@@ -20,8 +20,7 @@ img{
     right:0;
     
 }
-span{
-    
+.myspan{ 
     padding-left: 2vw;
     padding-right:2vw;
     font-size:1.1vw;
@@ -29,8 +28,9 @@ span{
 } 
 .myheader{
     margin-top: 2vw;
-    padding-left:41vw;
+    padding-left:42vw;
     padding-bottom:0vw;
+    
 }
 a:hover{
     color:orangered;
@@ -38,7 +38,7 @@ a:hover{
     text-decoration: none;
 }
 
-span:hover
+.myspan:hover
 {
     color:orangered;
     cursor:pointer;   
@@ -158,13 +158,15 @@ input[type=submit]:hover{
     background-color:green;
 }
 .refresh{
-    background-color: white;
     border: black;
-    padding:10px;
-
+    height:40px;
+     padding-left: 2vw;
+    padding-right:2vw;
+    border-radius: 5px;
+    
 }
 .refresh:hover{
-    background-color: whitesmoke;
+    background-color: rgba(252, 182, 53, 0.945);
 }
 .refresh:focus{
     outline:none;
@@ -221,7 +223,13 @@ input[type=submit]:hover{
   
  .resetAnchor:hover
  {
-     
-     cursor:pointer;
-     
+     cursor:pointer;   
  }
+ .myicon{
+  height:4%;
+  width:4%;
+  position:absolute;
+  left:0;
+  top:0;
+ }
+ 

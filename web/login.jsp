@@ -8,31 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/login.css">
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     </head>
     <body>
         <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">Contact</a></span>
-                <span><a href="www.google.com">Price List</a></span>
+                <span> <a href="#downfooter">Contact</a></span>
+                <span><a href="PriceList.jsp">Price List</a></span>
                 <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
                 <span><a href="login.jsp">Login/Register</a></span>
             </div>
         </div>
-        <%-- <div>
-            <ul>
-                <li id="logo"><a href="index.html"><img src="images/logo.jpg" alt="ScrapKart" height="60" width="100"></a></li>
-                
-                <li><a href="www.google.com">Contact</a></li>
-                <li><a onclick="alert('Please Login first!');">Request PickUp</a></li>
-                <li><a href="www.google.com">Price List</a></li>
-                <li><a href="login.jsp">Login/Register</a></li>
-            </ul>
-
-        </div> --%>
         <div class="container">
             <div class="row" >
                 <div class="col-sm-3"></div>
@@ -54,6 +40,27 @@
         </div>
 
     </body>
+     <div class="container-fluid myfooter"  id="downfooter" style="height: 15vw;">
+        
+            <div class="row okrow">
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="images/green.png" height="70" width="80">Go Green
+                </div>
+
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
+                </div>
+
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
+                  Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi0703@gmail.com</p>
+                </div>
+            </div>    
+        </div>
+
     <%
         String status = request.getParameter("isvalid");
         if (status != null && status.equals("false")) {
@@ -61,15 +68,13 @@
     <script>
         alert("Invalid user_id or password!!");
     </script>
-    
-
-   
+ 
     <%
         }
     %>
      <%
         String status2 = request.getParameter("Regisvalid");
-        if (status2 != null && status2.equals("true")) {
+        if (status2!= null && status2.equals("true")) {
     %>
      <script>
         alert("Registration Successful!Please Login");
@@ -83,6 +88,4 @@
         alert("Already registered with this username!");
      </script>
      <% } %>
-   
-
 </html>

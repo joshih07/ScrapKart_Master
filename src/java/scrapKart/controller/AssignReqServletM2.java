@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -60,6 +61,8 @@ public class AssignReqServletM2 extends HttpServlet {
         catch (SQLException ex) 
         {
             ex.printStackTrace();
+            Logger.getLogger(AssignReqServletM2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(AssignReqServletM2.class.getName()).log(Level.SEVERE, null, ex);
         }
         

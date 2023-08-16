@@ -5,10 +5,11 @@ body{
     background-repeat:no-repeat;
     background-size: 100%;
     background-color: #003F2A;
+    overflow-x: hidden;
 }
 img{
     width: 10vw;
-    height:4.8vw;
+    height:4.6vw;
     padding-left:3.5vw;
     
 }
@@ -130,7 +131,7 @@ hr
     border-radius:5px;
     padding: 12px;
     /*box-shadow: 5px 10px 10px #888888; */
-    margin-top:10%;
+    margin-top:4%;
     background-color:rgba(255,255, 255,0.9);
 
 }
@@ -175,3 +176,28 @@ input[type=submit]:hover
     margin-left:30%;
     font-size:20px;
 }
+.myfooter{
+        background-color:#003F2A;
+        margin-top:5vw;
+        color:whitesmoke;
+        margin-bottom: 0vw;
+        right:0;
+        box-shadow: 2px 2px 2px 2px #f1f1f1;
+    }
+    .myfooter p{
+        margin-top: 15px;
+        font-size: 1.0vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        color:rgba(245, 245, 245, 0.555);  
+    }
+    .gogreen p{
+       padding-left: 80px;
+       margin-top: -10px;
+       padding-top: 0px;
+       color:whitesmoke;
+    }
+    .okrow{
+        padding-top:2vw;
+        font-size:1.3vw;
+    }

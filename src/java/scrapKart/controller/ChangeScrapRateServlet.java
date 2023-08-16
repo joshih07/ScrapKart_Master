@@ -17,7 +17,7 @@ import scrapKart.model.scrapKartModel;
 
 /**
  *
- * @author HARSHITA JMA
+ * @author HIMANSHU JOSHI
  */
 @WebServlet(name = "ChangeScrapRateServlet", urlPatterns = {"/ChangeScrapRateServlet"})
 public class ChangeScrapRateServlet extends HttpServlet {

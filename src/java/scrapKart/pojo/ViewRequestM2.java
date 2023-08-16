@@ -7,7 +7,7 @@ package scrapKart.pojo;
 
 /**
  *
- * @author HARSHITA JMA
+ * @author HIMANSHU JOSHI
  */
 public class ViewRequestM2 {
     

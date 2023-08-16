@@ -3,11 +3,48 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-repeat:no-repeat;
     background-size: 100%;
-  
     background-color:rgba(144, 238, 144, 0.712);
-   
 }
-ul{
+img{
+    width: 10vw;
+    height:4.6vw;
+    padding-left:3.5vw;
+    
+}
+.myrow{
+    margin-top: 0rem;
+    box-shadow:0px 0px 0px 1.6px #ffa600a6; 
+    position:sticky;
+    top:0;
+    z-index:2;
+    background-color: white;
+    right:0;
+    
+}
+span{
+    
+    padding-left: 2vw;
+    padding-right:2vw;
+    font-size:1.1vw;
+    font-family:'PT Sans', sans-serif;
+} 
+.myheader{
+    margin-top: 2vw;
+    padding-left:41vw;
+    padding-bottom:0vw;
+}
+a:hover{
+    color:orangered;
+    cursor:pointer;   
+    text-decoration: none;
+}
+
+span:hover
+{
+    color:orangered;
+    cursor:pointer;   
+}
+/* ul{
     list-style-type: none;
     margin-bottom: -10px;
     overflow: hidden;
@@ -35,8 +72,8 @@ li a
     display:block;
     text-align:center;
     padding:15px 16px;
-    text-decoration:none;
-}
+    text-decoration:none; 
+}*/
 #logo
 {
    float:left;
@@ -56,3 +93,39 @@ hr{
     width: 180px;
       
 }
+.myicon{
+    padding-left:0px;
+    height:3%;
+    width: 3%;
+}
+.myicon2{
+    padding-left: 0px;
+    height: 30px;
+    width:30px;
+    
+}
+.myfooter{
+        background-color:#003F2A !important;
+        margin-top:5vw;
+        color:whitesmoke;
+        margin-bottom: 0vw;
+        right:0;
+    }
+    .myfooter p{
+        margin-top: 15px;
+        font-size: 1.0vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        color:rgba(245, 245, 245, 0.555);  
+    }
+    .gogreen p{
+       padding-left: 80px;
+       margin-top: -10px;
+       padding-top: 0px;
+       color:whitesmoke;
+    }
+    .okrow{
+        padding-top:2vw;
+        font-size:1.3vw;
+    }
+

@@ -9,23 +9,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="calculator.css">
-    <title>ScrapKart</title>
+    <title>ScrapKart Calculator</title>
 </head>
 <body >
         <div class="row myrow" >
-            <div class="col-sm-2"><img src="./logo1.jpeg" class="img-fluid"></div>
+            <div class="col-sm-2"><a href="..//logout.jsp"><img src="./logo1.jpeg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span>Login/Register</span>
-                <span>Price List</span>
-                <span>Request PickUp</span>
-                <span>Logout</span>
+                <span><a href="..//PriceList.jsp">Price List</a></span>
+                <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
+                 <span> <a href="#downfooter">Contact</a></span>
+                <span><a href="..//login.jsp">Login/Register</a></span>
+   
             </div>
         </div>
         <div class="row" >
             <h3>
-                <img class ="gif"src="./new.gif"><strong>SCRAPKART CALCULATOR</strong>
+                <img class ="gif" src="./new.gif"><strong> SCRAPKART CALCULATOR</strong>
             </h3>
-            <p>Select Scrap Items and enter an approximate weight </p>
+            <p class="uppara">Select Scrap Items and enter an approximate weight </p>
         
             <a href="#amount"><button type="button" class="btn btn-warning"  id="calculate" onclick="on();">Calculate Amount</button></a>
         </div>
@@ -176,22 +177,25 @@
         </div>
         <div id="amount" onclick="off();">
         </div>
-        <div class="container-fluid myfooter" style="height: 15vw;">
+        <div class="container-fluid myfooter" id="downfooter" style="height: 15vw;">
         
             <div class="row okrow">
-                <div class="col-sm-4 gogreen" style="padding-left:1vw;padding-top:1.7" >
-                    <img src="./green.png">Go Green
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="./green.png" height="70" width="80">Go Green
                 </div>
 
-                <div class="col-sm-4 "id="tandc"style="padding-top:1vw;text-align: center;" >
-                    Terms and Conditions
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
                 </div>
 
-                <div class="col-sm-4"id="contact" style="text-align: center;padding-top:1vw;">
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
                   Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi0703@gmail.com</p>
                 </div>
             </div>    
-
         </div>
        
 </body>

@@ -1,6 +1,6 @@
 <%-- 
     Document   : RequestInfo
-    Created on : 27 Feb, 2020, 10:13:29 AM
+    Created on : 27 Feb, 2023, 10:13:29 AM
     Author     : HIMANSHU JOSHI
 --%>
 
@@ -31,7 +31,7 @@
      <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="www.google.com">Contact</a></span>
+                <span> <a href="#downfooter">Contact</a></span>
                 <span><a href="www.google.com">Price List</a></span>
                 <span><a onclick="alert('Please Login first!');">Request PickUp</a></span>
                 <span><a href="login.jsp">Login/Register</a></span>
@@ -135,7 +135,26 @@
                 </div>
                 <br><br><br>
         </div>
-        <div class="container-fluid" style="height: 300px; background-color:#003F2A;">
+       <div class="container-fluid myfooter" id="downfooter" style="height: 15vw;">
+        
+            <div class="row okrow">
+                <div class="col-sm-4 gogreen" style="padding-left:70px;padding-top:1.7" >
+                    <img src="images/green.png" height="70" width="80">Go Green
+                </div>
+
+                <div class="col-sm-4 " id="tandc" style="padding-top:1vw;text-align: center;" >
+                    About Us
+                    <p class="text-black-50">Today, with a rise in health awareness, lifestyle, convenience (door step services), pollution, land fillings and many more reasons allow us to think out of the box. <br><span>This is ScrapKart!</span></p>
+                </div>
+
+                <div class="col-sm-4" id="contact" style="text-align: center;padding-top:1vw;">
+                  Contact us
+                  <p> 16-9-406/A/80, Ground Floor Vijay Nagar,<br>New Market,Mandsaur 435612</p>
+                  <p> Phone: 7898781539</p>
+                  <p> Email: himanshujoshi0703@gmail.com</p>
+                </div>
+            </div>    
+        </div>
     </body>
 </html>
 

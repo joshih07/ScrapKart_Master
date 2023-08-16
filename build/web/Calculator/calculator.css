@@ -19,6 +19,14 @@ img{
     right:0;
     
 }
+.myrow a{
+    text-decoration: none;
+      cursor: pointer;
+}
+.myrow a:hover{
+    color:orange;
+  
+}
 span{
     
     padding-left: 2vw;
@@ -41,9 +49,9 @@ h3{
     letter-spacing: 0.3vw;
     
 }
-p{
+.uppara {
     font-size:1.4vw;
-    margin-left:10.6vw;
+    margin-left:11vw;
     margin-top:3vw;
     margin-bottom:0vw;
     text-decoration:underline;
@@ -81,17 +89,24 @@ tbody{
     text-align: center;
 }
 .myfooter{
-    background-color:#003F2A;
-    margin-top:5vw;
-    color:whitesmoke;
-    margin-bottom: 0vw;
-    right:0;
-}
-
-.okrow{
-    padding-top:5vw;
-    font-size:1.3vw;
-}
+        background-color:#003F2A;
+        margin-top:5vw;
+        color:whitesmoke;
+        margin-bottom: 0vw;
+        right:0;
+        box-shadow: 2px 2px 2px 2px #f1f1f1;
+    }
+    .myfooter p{
+        margin-top: 15px;
+        font-size: 1.0vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        color:rgba(245, 245, 245, 0.555);  
+    }
+    .okrow{
+        padding-top:2vw;
+        font-size:1.3vw;
+    }
 
 #amount{
     width:50vw;

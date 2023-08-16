@@ -1,7 +1,7 @@
 <%-- 
     Document   : ViewRequest
-    Created on : 2 Mar, 2020, 10:25:01 AM
-    Author     : HARSHITA JMA
+    Created on : 2 Mar, 2023, 10:25:01 AM
+    Author     : HIMANSHU JOSHI
 --%>
 
 <%@page import="java.io.PrintWriter"%>
@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ScrapKart DashBoard</title>
+    <title>FilteredRequests@Manager</title>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -27,10 +27,12 @@
      <div class="row myrow" >
             <div class="col-sm-2"><a href="logout.jsp"><img src="images/logo.jpg" class="img-fluid"></a></div>
             <div class="col-sm-10 myheader">
-                <span><a href="EmployeeLogin.html">LogOut</a></span>
-                <span><a href="DashBoard.html">DashBoard</a></span>
-                <span><a >View Request</a></span>
-                <span><a href="">Profile</a></span>
+                <!--<span class="myspan"><a href="">Profile</a></span>-->
+                <span class="myspan" ><a >View Request</a></span>
+                <span class="myspan"><a href="PriceListM2.jsp">PriceList</a></span>
+                <span class="myspan"><a href="DashBoardM2.jsp">DashBoard</a></span>
+                <span class="myspan"><a href="LoginM2.jsp">Log out</a></span>
+      
             </div>
         </div>
     <div>
@@ -61,15 +63,15 @@
                    <a onclick="disable3()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="ondate" value="" placeholder="dd/mm/yyyy" id="ondate" /></a>
           
                     
-                    <label >Search by Date Range</label><br>
+<!--                    <label >Search by Date Range</label><br>
                     <label > From</label><br>
-                    <a onclick="disable4()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="fromdate" value="" placeholder="dd/mm/yyyy" id="fromdate"></a>
+                    <a onclick="disable4()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="fromdate" value="" placeholder="DD-Mon-YYYY" id="fromdate"></a>
                     <label> To</label><br>
-                    <a onclick="disable4()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="todate" value="" placeholder="dd/mm/yyyy" id="todate"></a>
+                    <a onclick="disable4()"><input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="todate" value="" placeholder="DD-Mon-YYYY" id="todate"></a>-->
                     
-                    
+                     <input type="submit" value="Search Again" onclick="window.location.href='ViewRequestM2.jsp'">
                 </form>
-                   <input type="submit" value="Search Again" onclick="window.location.href='ViewRequestM2.jsp'">
+                  
                </div>
                <%
                      System.out.println("i am here!!!"+request.getParameter("cust_name"));
@@ -119,7 +121,7 @@
                     {
                         String fromdate=request.getParameter("fromdate");
                         String todate=request.getParameter("toDate");
-                         try
+                        try
                         {
                             request_List=scrapKartModel.FetchReqOnFromdate(fromdate,todate);
                         }
@@ -132,11 +134,11 @@
                <div class="minor2"> 
                 
                 <button class="refresh">
-                    <a onclick="window.location.reload();">  <img src="images/ref.png" height="20" width="20"> </a>
+                    <a onclick="window.location.reload();">  <img src="images/ref.png" class="myicon"> </a>
                      <span>Refresh</span>
                  </button>
                  <button class="refresh"  onclick="window.location.href='ViewRequestM2.jsp'">
-                    <img src="images/product.png" height="20" width="20">
+                    <img src="images/product.png"  class="myicon">
                     <span>Today's Requests</span>
                  </button>
 
@@ -222,18 +224,17 @@
                var req_id=d.getAttribute("data-id");
                if(action=="View Request")
                     window.location.replace("RequestInfoM2.jsp?req_id="+req_id);
-               if(action=="Cancel Request")
+               else if(action=="Cancel Request")
                {
                    if(confirm("Cancel Request ?"))
                         window.location.replace("CancelReqM2.jsp?req_id="+req_id);
                }
-               if(action=="Assign Request")
+               else if(action=="Assign Request")
                {
                     //alert(action);
 //                   window.location.replace("AssignRequestM2.jsp?req_id="+req_id);
                      document.getElementById('id01').style.display='block';           
-               }
-
+                }
                else
                {
                    document.getElementById('id02').style.display='block';
@@ -265,7 +266,7 @@
                              </select><br><br>
  
                               <label>Schedule On </label><br>
-                              <input type="text" class="datepicker" name="schedulDate"  placeholder="dd-MON-yyyy" id="ondate" /><br>
+                              <input type="text" name="scheduleDate"  placeholder="dd/mm/yyyy" id="ondate" /><br>
                               <label>Please confirm Request Id </label><br>
                               <input type="text" name="requestId" placeholder="Enter Request Id here">
                       
@@ -294,22 +295,18 @@
                             <label for="sel1" style="font-size:15px" >Please confirm RequestId to Cancel Request:</label><br>
                             <label>Select PickUp Boy </label><br>
                            <select class="form-control" id="sel1" name="pkID">
-  <!-- ArrayList to be displayed using for loop -->
-  <option value="PB101" style="font-size:15px">PB101</option>
-  <option value="PB102" style="font-size:15px">PB102</option>
-  <option value="PB103" style="font-size:15px">PB103</option>
-  <option value="PB104" style="font-size:15px">PB104</option>
-  <option value="PB105" style="font-size:15px">PB105</option>
+    <!--ArrayList to be displayed using for loop-->
+    <option value="PB101" style="font-size:15px">PB101</option>
+    <option value="PB102" style="font-size:15px">PB102</option>
+    <option value="PB103" style="font-size:15px">PB103</option>
+    <option value="PB104" style="font-size:15px">PB104</option>
+    <option value="PB105" style="font-size:15px">PB105</option>
 </select>
-<br>
-<label for="ondate">Schedule On</label>
-<br>
-<input type="text" class="datepicker" name="schedulDate" placeholder="dd-MON-yyyy" id="ondate">
-<br>
-<label for="requestId">Please confirm Request Id</label>
-<br>
+<label>Schedule On </label><br>
+<input type="text" class="datepicker" name="schedulDate" placeholder="dd-MON-yyyy" id="ondate" /><br>
+<label>Please confirm Request Id </label><br>
 <input type="text" name="requestId" placeholder="Enter Request Id here">
-
+<br><br>
                                 <!--Add a text to enter date-->
                             <button class="btn btn-success" type="submit">Submit</button>
                           </div>        
